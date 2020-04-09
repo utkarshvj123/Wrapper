@@ -3,11 +3,28 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.css';
+
+import reducer from './redux';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux'
+import ReduxPromise from 'redux-promise';
+import {applyMiddleware, compose, createStore} from 'redux';
+
+
+
+const store = createStore(
+  reducer,
+  compose(
+      applyMiddleware(thunk,ReduxPromise),
+      window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__({trace: true, traceLimit: 25}) : f => f
+  )
+);
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
