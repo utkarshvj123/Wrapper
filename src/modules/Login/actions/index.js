@@ -1,10 +1,19 @@
-export const FILTERED_ARRAY_VALUE = "FILTERED_ARRAY_VALUE";
+import { GET_DATA } from "../../Home/actions";
+// import response from "../../../constants/response.json";
 
-export function filteredArray(value) {
+export const IS_VALID_USER = "IS_VALID_USER";
+
+export function authenticateUserAction(data) {
   return (dispatch) => {
     dispatch({
-      type: FILTERED_ARRAY_VALUE,
-      payload: value,
+      type: IS_VALID_USER,
+      payload: data,
     });
+    // if (data === true) {
+    //   dispatch({
+    //     type: GET_DATA,
+    //     payload: response,
+    //   });
+    // }
   };
 }

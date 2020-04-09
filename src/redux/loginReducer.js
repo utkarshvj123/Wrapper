@@ -1,4 +1,4 @@
-import { FILTERED_ARRAY_VALUE } from "../modules/Login/actions";
+import { IS_VALID_USER } from "../modules/Login/actions";
 
 const initialState = {
   cartTotal: 0,
@@ -6,7 +6,7 @@ const initialState = {
 
 export const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FILTERED_ARRAY_VALUE:
+    case IS_VALID_USER:
       return {
         ...state,
         cartTotal: action.payload,

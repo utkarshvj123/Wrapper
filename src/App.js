@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import AuthRoute from "./router/AuthRoute";
 import Login from "./modules/Login";
 import PropTypes from "prop-types";
+import LandingPage from "./modules/LandingPage";
 
 
 function App(props) {
@@ -17,7 +18,7 @@ function App(props) {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact={true} path="/login" component={Login} />
+          <Route exact={true} path="/login" component={LandingPage} />
           <AuthRoute isValidUser={props.isValidUser}/>
           <Route
             path="/"
@@ -37,7 +38,7 @@ export default connect(mapStateToProps, null)(App);
 
 
 App.defaultProps = {
-  isValidUser: false,
+  isValidUser: true,
 };
 App.propTypes = {
   isValidUser: PropTypes.bool,

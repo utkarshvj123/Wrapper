@@ -2,47 +2,59 @@ import React from "react";
 import ReactFormInputValidation from "react-form-input-validation";
 import "./style.scss";
 import { withRouter } from "react-router-dom";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import {authenticateUserAction} from '../Login/actions';
 
-class Login extends React.Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       fields: {
+        name: "",
         email: "",
         password: "",
+        confirmPassword: "",
       },
       errors: {},
     };
     this.form = new ReactFormInputValidation(this);
     this.form.useRules({
+      name: "required",
       email: "required|email",
       password: "required",
+      confirmPassword: "required",
     });
     this.form.onformsubmit = (fields) => {
-      if (
-        localStorage.getItem("email") === null &&
-        localStorage.getItem("password") === null
-      )
-        return alert("not registered please registered first");
-      else if (localStorage.getItem("email") !== fields.email)
-        return alert("email not matched");
-      else if (localStorage.getItem("password") !== fields.password)
-        return alert("password not matched");
-      else {
-        this.props.authenticateUserAction(true);
-        this.props.history.push("/home");
+      console.log("value", fields);
+      if (fields.password !== fields.confirmPassword) {
+        console.log("password not matched");
+      } else {
+        localStorage.setItem("email", fields.email);
+        localStorage.setItem("password", fields.password);
+        this.props.history.push("/");
       }
     };
   }
-
 
   render() {
     return (
       <React.Fragment>
         <form onSubmit={this.form.handleSubmit}>
+          <p className="custom-input">
+            <label>
+              Name
+              <input
+                type="name"
+                name="name"
+                className="mt-2 form-control"
+                onBlur={this.form.handleBlurEvent}
+                onChange={this.form.handleChangeEvent}
+                value={this.state.fields.name}
+                autoComplete="off"
+              />
+            </label>
+            <label className="error">
+              {this.state.errors.name ? this.state.errors.name : ""}
+            </label>
+          </p>
           <p className="custom-input">
             <label>
               Email
@@ -77,6 +89,25 @@ class Login extends React.Component {
               {this.state.errors.password ? this.state.errors.password : ""}
             </label>
           </p>
+          <p className="custom-input">
+            <label>
+              Confirm Password
+              <input
+                type="password"
+                name="confirmPassword"
+                className="mt-2 form-control"
+                onBlur={this.form.handleBlurEvent}
+                onChange={this.form.handleChangeEvent}
+                value={this.state.fields.confirmPassword}
+                autoComplete="off"
+              />
+            </label>
+            <label className="error">
+              {this.state.errors.confirmPassword
+                ? this.state.errors.confirmPassword
+                : ""}
+            </label>
+          </p>
 
           <p>
             <button type="submit" className="btn btn-secondary">
@@ -89,15 +120,4 @@ class Login extends React.Component {
   }
 }
 
-const mapStateToProps=({isValidUser})=> {
- return{ isValidUser}
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-    ...bindActionCreators({ authenticateUserAction }, dispatch)
-  };
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
+export default withRouter(SignUp);
