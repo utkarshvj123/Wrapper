@@ -17,14 +17,13 @@ function App(props) {
     <div className="App">
       <Router>
         <Switch>
-          <Route exact path="/login" component={Login} />
+          <Route exact={true} path="/login" component={Login} />
           <AuthRoute isValidUser={props.isValidUser}/>
           <Route
-            exact
             path="/"
-            render={() => <Redirect to="/login" />}
+            render={() => <Redirect from="/" to="/login" />}
           ></Route>
-          <Redirect exact from="*" to="/login" />
+          <Redirect from="*" to="/login" />
         </Switch>
       </Router>
     </div>
@@ -38,7 +37,7 @@ export default connect(mapStateToProps, null)(App);
 
 
 App.defaultProps = {
-  isValidUser: true,
+  isValidUser: false,
 };
 App.propTypes = {
   isValidUser: PropTypes.bool,
