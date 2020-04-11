@@ -1,5 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Used multiple libraries like=>
+1. proptypes => used for providing proptypes and default props so that our code will not break.
+2. redux=>used redux for state management.
+3.styledcomponents=> used to provide style as a prop to common components from derived component.
+
+I have created a web-app where you need to register first and the you can signin which th same credential after that you can get your cards having the required data in that then you have to click on detail button so that your modal will open and get your detail of starting and ending time.
+
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
