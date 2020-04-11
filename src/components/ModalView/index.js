@@ -6,7 +6,6 @@ import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalFooter from "react-bootstrap/ModalFooter";
 import ModalTitle from "react-bootstrap/ModalTitle";
-import Cards from "../Cards";
 import "./style.css";
 import PropTypes from "prop-types";
 

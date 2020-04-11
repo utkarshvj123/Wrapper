@@ -37,7 +37,7 @@ function ModalWrapper(props) {
         >
           <div>
             {modalData.activity_periods.map((obj) => (
-              <div className="datadiv">
+              <div className="datadiv" key={obj.start_time}>
                 <div className="starttime">
                   <span>
                     <h5>{"Start time :"}</h5>
