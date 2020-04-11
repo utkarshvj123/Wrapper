@@ -13,12 +13,6 @@ function ModalWrapper(props) {
   const modalVisibility = (value) => {
     props.modalPopUp(false);
   };
-
-  const [getEnableButton, setEnableButton] = useState(false);
-
-  const enableCalender = () => {
-    setEnableButton(!getEnableButton);
-  };
   const { modalData } = props;
   return (
     <React.Fragment>
@@ -41,29 +35,29 @@ function ModalWrapper(props) {
                   <span>
                     <h5>{"Start time :"}</h5>
                   </span>
-                  <span style={{width:"160px"}}>{obj.start_time}</span>
+                  <span style={{ width: "160px" }}>{obj.start_time}</span>
                 </div>
                 <div className="starttime">
                   <span>
                     <h5>{"End time :"}</h5>
                   </span>
-                  <span style={{width:"160px"}}>{obj.end_time} </span>
+                  <span style={{ width: "160px" }}>{obj.end_time} </span>
                 </div>
               </div>
             ))}
           </div>
 
-          {!getEnableButton ? (
+          {!props.detailStatus ? (
             <div className="btn-sm-div">
               <button
                 className="btn btn-info btn-sm"
-                onClick={() => enableCalender()}
+                onClick={() => props.enableButtonDetail()}
               >
                 Details
               </button>
             </div>
           ) : null}
-          {getEnableButton ? (
+          {props.detailStatus ? (
             <React.Fragment>
               <div style={{ padding: "3% 7%" }}>
                 <FullCalendar
@@ -78,7 +72,7 @@ function ModalWrapper(props) {
               <div className="btn-sm-div">
                 <button
                   className="btn btn-primary btn-sm"
-                  onClick={() => enableCalender()}
+                  onClick={() => props.enableButtonDetail()}
                 >
                   Disable
                 </button>

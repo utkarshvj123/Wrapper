@@ -2,6 +2,11 @@ import React from "react";
 import ReactFormInputValidation from "react-form-input-validation";
 import "./style.scss";
 import { withRouter } from "react-router-dom";
+import styled from "styled-components";
+
+const StyledLabel = styled.label`
+  text-align: left;
+`;
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -38,7 +43,7 @@ class SignUp extends React.Component {
       <React.Fragment>
         <form onSubmit={this.form.handleSubmit}>
           <p className="custom-input">
-            <label>
+            <StyledLabel>
               Name
               <input
                 type="name"
@@ -49,13 +54,13 @@ class SignUp extends React.Component {
                 value={this.state.fields.name}
                 autoComplete="off"
               />
-            </label>
+            </StyledLabel>
             <label className="error">
               {this.state.errors.name ? this.state.errors.name : ""}
             </label>
           </p>
           <p className="custom-input">
-            <label>
+            <StyledLabel>
               Email
               <input
                 type="email"
@@ -66,13 +71,13 @@ class SignUp extends React.Component {
                 value={this.state.fields.email}
                 autoComplete="off"
               />
-            </label>
+            </StyledLabel>
             <label className="error">
               {this.state.errors.email ? this.state.errors.email : ""}
             </label>
           </p>
           <p className="custom-input">
-            <label>
+            <StyledLabel>
               Password
               <input
                 type="password"
@@ -83,13 +88,13 @@ class SignUp extends React.Component {
                 value={this.state.fields.password}
                 autoComplete="off"
               />
-            </label>
+            </StyledLabel>
             <label className="error">
               {this.state.errors.password ? this.state.errors.password : ""}
             </label>
           </p>
           <p className="custom-input">
-            <label>
+            <StyledLabel>
               Confirm Password
               <input
                 type="password"
@@ -100,7 +105,7 @@ class SignUp extends React.Component {
                 value={this.state.fields.confirmPassword}
                 autoComplete="off"
               />
-            </label>
+            </StyledLabel>
             <label className="error">
               {this.state.errors.confirmPassword
                 ? this.state.errors.confirmPassword

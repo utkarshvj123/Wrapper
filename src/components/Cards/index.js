@@ -19,12 +19,12 @@ const Cards = React.memo(({ cardBody, styleCss, cardMapping, data }) => {
         <CardContainer className="card" key={obj.id} styleCss={styleCss}>
           <div className="card-body">
             <CardBody className="row" styleBody={cardBody}>
-              <span>Name :</span>
-              <span>{obj.real_name}</span>
+              <div>Name :</div>
+              <div>{obj.real_name}</div>
             </CardBody>
             <CardBody className="row" styleBody={cardBody}>
-              <span>TImezone :</span>
-              <span>{obj.tz}</span>
+              <div>TImezone :</div>
+              <div>{obj.tz}</div>
             </CardBody>
           </div>
           <cardMapping.type

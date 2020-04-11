@@ -8,11 +8,7 @@ import { modalPopUp } from "./actions";
 import ModalWrapper from "../../components/ModalWrapper";
 import NavBar from "../../components/NavBar";
 import { authenticateUserAction } from "../Login/actions";
-import {
-  filterArrayRequired,
-} from "../../constants/globalFunction";
-
-
+import { filterArrayRequired } from "../../constants/globalFunction";
 
 const Container = styled.div`
   display: grid;
@@ -38,6 +34,7 @@ class Home extends Component {
       data: [],
       selectedCard: {},
       selectedContentArray: [],
+      enableButton: false,
     };
   }
 
@@ -54,7 +51,10 @@ class Home extends Component {
     this.setState({ selectedCard: value, selectedContentArray: newVal });
   };
 
-  
+  enableButtonDetail = () => {
+    this.setState({ enableButton: !this.state.enableButton });
+  };
+
   cardMapping = {
     name: "Details",
     type: "button",
@@ -88,14 +88,16 @@ class Home extends Component {
               fontSize: "medium",
               fontWeight: 600,
               margin: "3% 2% !important",
-              justifyContent: "space-around",
+              justifyContent: "space-between",
             }}
             data={data}
             cardMapping={this.cardMapping}
           />
           <ModalWrapper
+            enableButtonDetail={this.enableButtonDetail}
             modalData={this.state.selectedCard}
             selectedContentArray={this.state.selectedContentArray}
+            detailStatus={this.state.enableButton}
           />
         </Container>
       </React.Fragment>

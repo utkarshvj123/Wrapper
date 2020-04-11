@@ -4,7 +4,12 @@ import "./style.scss";
 import { withRouter } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {authenticateUserAction} from '../Login/actions';
+import { authenticateUserAction } from "../Login/actions";
+import styled from "styled-components";
+
+const StyledLabel = styled.label`
+  text-align: left;
+`;
 
 class Login extends React.Component {
   constructor(props) {
@@ -38,13 +43,12 @@ class Login extends React.Component {
     };
   }
 
-
   render() {
     return (
       <React.Fragment>
         <form onSubmit={this.form.handleSubmit}>
           <p className="custom-input">
-            <label>
+            <StyledLabel>
               Email
               <input
                 type="email"
@@ -55,13 +59,13 @@ class Login extends React.Component {
                 value={this.state.fields.email}
                 autoComplete="off"
               />
-            </label>
+            </StyledLabel>
             <label className="error">
               {this.state.errors.email ? this.state.errors.email : ""}
             </label>
           </p>
           <p className="custom-input">
-            <label>
+            <StyledLabel>
               Password
               <input
                 type="password"
@@ -72,7 +76,7 @@ class Login extends React.Component {
                 value={this.state.fields.password}
                 autoComplete="off"
               />
-            </label>
+            </StyledLabel>
             <label className="error">
               {this.state.errors.password ? this.state.errors.password : ""}
             </label>
@@ -89,14 +93,14 @@ class Login extends React.Component {
   }
 }
 
-const mapStateToProps=({isValidUser})=> {
- return{ isValidUser}
-}
+const mapStateToProps = ({ isValidUser }) => {
+  return { isValidUser };
+};
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    ...bindActionCreators({ authenticateUserAction }, dispatch)
+    ...bindActionCreators({ authenticateUserAction }, dispatch),
   };
 }
 
