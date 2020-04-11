@@ -50,7 +50,6 @@ class Home extends Component {
 
   handleClick = (value) => {
     const newVal = filterArrayRequired(value.activity_periods);
-    console.log(value, "....value", newVal);
     this.props.modalPopUp(true);
     this.setState({ selectedCard: value, selectedContentArray: newVal });
   };
@@ -64,12 +63,10 @@ class Home extends Component {
   };
 
   logout = () => {
-    console.log("logout clicked");
     this.props.authenticateUserAction(false);
   };
 
   render() {
-    console.log(Object.keys(this.state.selectedCard).length, "'....syaye");
     const { data } = this.state;
     return (
       <React.Fragment>

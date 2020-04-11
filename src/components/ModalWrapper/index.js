@@ -19,7 +19,6 @@ function ModalWrapper(props) {
   const enableCalender = () => {
     setEnableButton(!getEnableButton);
   };
-  console.log(props.modalData.activity_periods, "....props at modal wrapper");
   const { modalData } = props;
   return (
     <React.Fragment>

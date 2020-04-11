@@ -23,7 +23,6 @@ class SignUp extends React.Component {
       confirmPassword: "required",
     });
     this.form.onformsubmit = (fields) => {
-      console.log("value", fields);
       if (fields.password !== fields.confirmPassword) {
         console.log("password not matched");
       } else {

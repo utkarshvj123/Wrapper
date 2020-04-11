@@ -66,36 +66,3 @@ Cards.propTypes = {
 };
 
 export default Cards;
-
-// export default class Cards extends Component {
-//   render() {
-//     console.log(this.props);
-//     const { styleCss, cardMapping } = this.props;
-//     return (
-//       <React.Fragment>
-//         {this.props.data.map((obj, index) => (
-//           <CardContainer className="card" key={obj.id} styleCss={styleCss}>
-//             <div className="card-body">
-//               <CardBody className="row" styleBody={this.props.cardBody}>
-//                 <span>Name :</span>
-//                 <span>{obj.real_name}</span>
-//               </CardBody>
-//               <CardBody className="row" styleBody={this.props.cardBody}>
-//                 <span>TImezone :</span>
-//                 <span>{obj.tz}</span>
-//               </CardBody>
-//             </div>
-//             <cardMapping.type
-//               className={cardMapping.class}
-//               onClick={() => {
-//                 cardMapping.click(obj, index);
-//               }}
-//             >
-//               {cardMapping.name}
-//             </cardMapping.type>
-//           </CardContainer>
-//         ))}
-//       </React.Fragment>
-//     );
-//   }
-// }

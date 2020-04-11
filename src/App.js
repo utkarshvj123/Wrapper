@@ -14,8 +14,6 @@ import LandingPage from "./modules/LandingPage";
 
 
 function App(props) {
-
-  console.log(",,,auth user",props)
   return (
     <div className="App">
       <Router>

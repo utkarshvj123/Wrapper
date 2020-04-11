@@ -3,7 +3,6 @@ export const MODAL_POP_UP="MODAL_POP_UP";
 
 
 export function getData(value) {
-  console.log(value.data,'...in action')
   return dispatch => {
     dispatch({
       type: GET_DATA,
