@@ -1,9 +1,19 @@
-import { GET_DATA } from "../modules/Home/actions";
+import { GET_DATA,MODAL_POP_UP } from "../modules/Home/actions";
 
-export const homeReducer = (state = [], action) => {
+const initialState = {
+  data: [],
+  modalPopUp:false
+};
+
+export const homeReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_DATA:
-    return action.payload
+      return { data: action.payload };
+    case MODAL_POP_UP:
+      return {
+        ...state,
+        modalPopUp: action.payload,
+      };
     default:
       return state;
   }

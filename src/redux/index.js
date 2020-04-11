@@ -4,7 +4,7 @@ import { loginReducer } from "./loginReducer";
 
 const rootReducer = combineReducers({
   homeData:homeReducer,
-  loginData:loginReducer,
+  isValidUser:loginReducer,
 });
 
 export default rootReducer;

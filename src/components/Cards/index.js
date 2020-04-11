@@ -1,22 +1,101 @@
-import React, { Component } from "react";
-import './style.css';
+import React from "react";
+import "./style.css";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import ModalWrapper from "../ModalWrapper";
 
-export default class Cards extends Component {
-  render() {
-    return (
-      <div className="card">
-        <div className="box">
-          <span>
-            <ul>
-              <li>
-                <a href="#">
-                  <i className="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
-          </span>
-        </div>
-      </div>
-    );
-  }
-}
+const CardContainer = styled.div`
+  ${(props) => props.styleCss}
+`;
+
+const CardBody = styled.div`
+  ${(props) => props.styleBody}
+`;
+
+const Cards = React.memo(({ cardBody, styleCss, cardMapping, data }) => {
+  return (
+    <React.Fragment>
+      {data.map((obj, index) => (
+        <CardContainer className="card" key={obj.id} styleCss={styleCss}>
+          <div className="card-body">
+            <CardBody className="row" styleBody={cardBody}>
+              <span>Name :</span>
+              <span>{obj.real_name}</span>
+            </CardBody>
+            <CardBody className="row" styleBody={cardBody}>
+              <span>TImezone :</span>
+              <span>{obj.tz}</span>
+            </CardBody>
+          </div>
+          <cardMapping.type
+            className={cardMapping.class}
+            onClick={() => {
+              cardMapping.click(obj, index);
+            }}
+          >
+            {cardMapping.name}
+          </cardMapping.type>
+        </CardContainer>
+      ))}
+
+    </React.Fragment>
+  );
+});
+
+Cards.defaultProps = {
+  styleCss: {
+    margin: "20px",
+    boxShadow: "0 20px 50px rgba(0,0,0,.1)",
+    borderRadius: "10px",
+    minWidth: "200px",
+  },
+  cardMapping: {},
+  data: [{ id: 0, tz: "ind", real_name: "default" }],
+  cardBody: {
+    fontSize: "medium",
+    fontWeight: 600,
+    margin: "3% 2% !important",
+    justifyContent: "space-around",
+  },
+};
+Cards.propTypes = {
+  cardBody: PropTypes.object,
+  data: PropTypes.array,
+  cardMapping: PropTypes.object,
+  styleCss: PropTypes.object,
+};
+
+export default Cards;
+
+// export default class Cards extends Component {
+//   render() {
+//     console.log(this.props);
+//     const { styleCss, cardMapping } = this.props;
+//     return (
+//       <React.Fragment>
+//         {this.props.data.map((obj, index) => (
+//           <CardContainer className="card" key={obj.id} styleCss={styleCss}>
+//             <div className="card-body">
+//               <CardBody className="row" styleBody={this.props.cardBody}>
+//                 <span>Name :</span>
+//                 <span>{obj.real_name}</span>
+//               </CardBody>
+//               <CardBody className="row" styleBody={this.props.cardBody}>
+//                 <span>TImezone :</span>
+//                 <span>{obj.tz}</span>
+//               </CardBody>
+//             </div>
+//             <cardMapping.type
+//               className={cardMapping.class}
+//               onClick={() => {
+//                 cardMapping.click(obj, index);
+//               }}
+//             >
+//               {cardMapping.name}
+//             </cardMapping.type>
+//           </CardContainer>
+//         ))}
+//       </React.Fragment>
+//     );
+//   }
+// }

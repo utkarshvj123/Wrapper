@@ -14,6 +14,8 @@ import LandingPage from "./modules/LandingPage";
 
 
 function App(props) {
+
+  console.log(",,,auth user",props)
   return (
     <div className="App">
       <Router>
@@ -38,7 +40,7 @@ export default connect(mapStateToProps, null)(App);
 
 
 App.defaultProps = {
-  isValidUser: true,
+  isValidUser: false,
 };
 App.propTypes = {
   isValidUser: PropTypes.bool,
