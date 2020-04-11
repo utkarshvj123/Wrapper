@@ -41,13 +41,13 @@ function ModalWrapper(props) {
                   <span>
                     <h5>{"Start time :"}</h5>
                   </span>
-                  <span>{obj.start_time}</span>
+                  <span style={{width:"160px"}}>{obj.start_time}</span>
                 </div>
                 <div className="starttime">
                   <span>
                     <h5>{"End time :"}</h5>
                   </span>
-                  <span>{obj.end_time} </span>
+                  <span style={{width:"160px"}}>{obj.end_time} </span>
                 </div>
               </div>
             ))}
